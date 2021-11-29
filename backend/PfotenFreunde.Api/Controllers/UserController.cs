@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PfotenFreunde.Api.Extensions;
 using PfotenFreunde.Shared.Contexts;
 using PfotenFreunde.Shared.Models;
 
@@ -21,18 +22,23 @@ public class UserController : ControllerBase
     [HttpGet]
     public IEnumerable<User> GetAll()
     {
-        // TODO: Implement this
-        return Enumerable.Empty<User>();
+		return this.context.Users;
     }
 
     /// <summary>
     /// Gets the specified user
     /// </summary>
     [HttpGet("{id}")]
-    public User Get(int id)
+    public async Task<ActionResult<User>> Get(int id)
     {
-        // TODO: Implement this
-        return null;
+		var user = await this.context.Users.FindAsync(id);
+
+		if (user == null)
+		{
+			return NotFound();
+		}
+
+		return user;
     }
 
     /// <summary>
@@ -41,10 +47,28 @@ public class UserController : ControllerBase
     /// <response code="403">Insufficient permissions</response>
     /// <response code="404">User does not exist</response>
     [HttpDelete("{id}")]
-    public User Delete(int id)
+    public ActionResult Delete(int id, string reason)
     {
-        // TODO: Implement this
-        return null;
+        return this.WithCurrentUser(context, currentUser =>
+        {
+            var user = this.context.Users.Find(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            if (!this.IsAdministrator() || user.Id != currentUser.Id)
+            {
+                return Forbid();
+            }
+            
+            this.context.Users.Remove(user);
+            
+            this.context.SaveChanges();
+            
+            return Ok();
+        });
     }
 
     /// <summary>
@@ -53,21 +77,60 @@ public class UserController : ControllerBase
     /// <response code="403">Insufficient permissions</response>
     /// <response code="404">User does not exist</response>
     [HttpPost("{id}/pause")]
-    public User Pause(int id)
+    public async Task<ActionResult> Pause(int id)
     {
-        // TODO: Implement this
-        return null;
+        var user = await context.Users.FindAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+        
+        user.Active = false;
+        context.Users.Update(user);
+        await context.SaveChangesAsync();
+
+        return Ok();
     }
 
+    /// <summary>
+    /// Resumes the subscription of the specified user
+    /// </summary>
+    /// <response code="403">Insufficient permissions</response>
+    /// <response code="404">User does not exist</response>
+    [HttpPost("{id}/resume")]
+    public async Task<ActionResult> Resume(int id)
+    {
+        var user = await context.Users.FindAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+        
+        user.Active = true;
+        context.Users.Update(user);
+        await context.SaveChangesAsync();
+
+        return Ok();
+    }
+    
     /// <summary>
     /// Reports the specified user
     /// </summary>
     /// <response code="404">User does not exist</response>
     [HttpPost("{id}/report")]
-    public User Report(Report report)
+    public async Task<ActionResult> Report(int id, Report report)
     {
-        // TODO: Implement this
-        return null;
+		var user = await this.context.Users.FindAsync(id);
+		if (user == null)
+		{
+			return NotFound();
+		}
+
+		report.UserId = id;
+		await this.context.Reports.AddAsync(report);
+		await this.context.SaveChangesAsync();
+		
+		return Ok();
     }
 
     /// <summary>
@@ -76,9 +139,106 @@ public class UserController : ControllerBase
     /// <response code="403">Insufficient permissions</response>
     /// <response code="404">User does not exist</response>
     [HttpPost("{id}/lock")]
-    public User Report(ulong time)
+    public async Task<ActionResult> Lock(int id, ulong time)
     {
-        // TODO: Implement this
-        return null;
+        if (!this.IsAdministrator())
+        {
+            return Forbid();
+        }
+        
+        var user = await context.Users.FindAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+        
+        user.LockedUntil = DateTime.Now.AddMilliseconds(time);
+        context.Users.Update(user);
+        await context.SaveChangesAsync();
+
+        return Ok();
+    }
+
+    /// <summary>
+    /// Gets ratings of user
+    /// </summary>
+    /// <response code="404">User does not exist</response>
+    [HttpGet("{id}/ratings")]
+    public IEnumerable<Rating> GetRatings(int id)
+    {
+        return context.Ratings.Where(x => x.UserId == id);
+    }
+    
+    /// <summary>
+    /// Create rating for user
+    /// </summary>
+    /// <response code="404">User does not exist</response>
+    [HttpPost("{id}/ratings")]
+    public ActionResult CreateRating(int id, Rating rating)
+    {
+        return this.WithCurrentUser(context, user =>
+        {
+            if (context.Users.Find(id) != null)
+            {
+                return NotFound();
+            }
+            
+            rating.Id = 0;
+            rating.SenderId = user.Id;
+            rating.UserId = id;
+            context.Ratings.Add(rating);
+            context.SaveChanges();
+
+            return Ok();
+        });
+    }
+
+    /// <summary>
+    /// Gets pictures of user
+    /// </summary>
+    [HttpGet("{id}/picture")]
+    public IEnumerable<Picture> GetPictures(int id)
+    {
+        var ids = context.PictureUsers
+            .Where(x => x.UserId == id)
+            .Select(x => x.Id);
+        
+        return context.Pictures.Where(x => ids.Contains(x.Id));
+    }
+
+    /// <summary>
+    /// Uploads picture of user
+    /// </summary>
+    [HttpPost("{id}/picture")]
+    public async Task PostPicture(int id, IFormFile file)
+    {
+        using var stream = new MemoryStream();
+        await file.CopyToAsync(stream);
+
+        var picture = new PictureUser()
+        {
+            UserId = id,
+            Picture = new Picture()
+            {
+                UploadDate = DateTime.Now,
+                Data = stream.ToArray()    
+            }
+        };
+        await context.PictureUsers.AddAsync(picture);
+        await context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Get top users
+    /// </summary>
+    [HttpGet("top")]
+    public IEnumerable<User> GetTop()
+    {
+        var ids = context.Ratings
+            .GroupBy(x => x.UserId)
+            .OrderByDescending(x => x.Count())
+            .Select(x => x.Key)
+            .Take(50);
+        return context.Users.Where(x => ids.Contains(x.Id));
     }
 }
