@@ -16,23 +16,43 @@ public class InstitutionController : ControllerBase
 	}
 	
     /// <summary>
-    /// Gets information about the institution
+    /// Gets all institutions
     /// </summary>
     [HttpGet]
-    public IEnumerable<Institution> Get()
+    public IEnumerable<Institution> GetAll()
     {
-        // TODO: Implement this
-        return Enumerable.Empty<Institution>();
+        return this.context.Institutions;
+    }
+	
+    /// <summary>
+    /// Gets information about the institution
+    /// </summary>
+    /// <response code="404">Institution not found</response>
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Institution>> Get(int id)
+    {
+        var institution = await this.context.Institutions.FindAsync(id);
+		
+		if (institution == null)
+		{
+			return NotFound();
+		}
+		
+		return institution;
     }
 
     /// <summary>
     /// Creates a new institution
     /// </summary>
     [HttpPost]
-    public int Post(Institution institution)
+    public async Task<int> Post(Institution institution)
     {
-        // TODO: Implement this
-        return int.MinValue;
+		institution.Id = 0;
+		var entry = await this.context.Institutions.AddAsync(institution);
+		
+		await this.context.SaveChangesAsync();
+
+		return entry.Entity.Id;
     }
 
     /// <summary>
@@ -40,8 +60,11 @@ public class InstitutionController : ControllerBase
     /// </summary>
     /// <response code="403">Insufficient permissions</response>
     [HttpPatch("{id}")]
-    public void Patch(int id, Institution institution)
+    public async Task Patch(int id, Institution institution)
     {
-        // TODO: Implement this
+		institution.Id = id;
+		var entry = this.context.Institutions.Update(institution);
+
+		await this.context.SaveChangesAsync();
     }
 }
