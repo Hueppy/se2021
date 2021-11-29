@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PfotenFreunde.Api", "Pfoten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PfotenFreunde.Shared", "PfotenFreunde.Shared\PfotenFreunde.Shared.csproj", "{C04ABFA6-43FB-4E46-8E51-1B03455C8C9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PfotenFreunde.Generator", "PfotenFreunde.Generator\PfotenFreunde.Generator.csproj", "{65C3DB70-3CBA-4CEF-81A6-BC6EE582563F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{C04ABFA6-43FB-4E46-8E51-1B03455C8C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C04ABFA6-43FB-4E46-8E51-1B03455C8C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C04ABFA6-43FB-4E46-8E51-1B03455C8C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65C3DB70-3CBA-4CEF-81A6-BC6EE582563F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65C3DB70-3CBA-4CEF-81A6-BC6EE582563F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65C3DB70-3CBA-4CEF-81A6-BC6EE582563F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65C3DB70-3CBA-4CEF-81A6-BC6EE582563F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
