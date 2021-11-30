@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/default_margin_half"
+            android:layout_marginRight="@dimen/default_margin_half">>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_search_24"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:textAlignment="center"/>
+                <EditText
+                    android:id="@+id/pet_search"
+                    style="@style/PromptText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@string/pet_search"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+            </LinearLayout>
+
+
+                <ListView
+                    android:id="@+id/pet_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="@dimen/default_margin_half">
+
+                </ListView>
+
+        </LinearLayout>
+
+
+    <include layout="@layout/draw_add_button" />
+
+</RelativeLayout>

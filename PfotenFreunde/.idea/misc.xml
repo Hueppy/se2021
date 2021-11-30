@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/PfotenFreunde/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22135416666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.22135416666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/drawable/ic_example_background.xml" value="0.22135416666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/drawable/round_button.xml" value="0.234375" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/drawable/round_top_background.xml" value="0.22604166666666667" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/drawable/side_nav_bar.xml" value="0.20104166666666667" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/drawable/text_password.xml" value="0.22135416666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/font/font.xml" value="0.23541666666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/activity_ladingpage.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/activity_nav_drawer.xml" value="0.11911231884057971" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/app_bar_main.xml" value="0.11911231884057971" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/app_bar_nav_drawer.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/content_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/content_nav_drawer.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/draw_divisor.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/draw_header.xml" value="0.25" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/draw_msg_overview_entry.xml" value="0.21822916666666667" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/draw_nav_view.xml" value="0.20989583333333334" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/draw_round_button.xml" value="0.21822916666666667" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/draw_toolbar.xml" value="0.5" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/drawer_content.xml" value="0.20989583333333334" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/entry_chat_msg.xml" value="0.21822916666666667" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/feed_entry.xml" value="0.25" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_chat_history.xml" value="0.21822916666666667" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_feed.xml" value="0.21822916666666667" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_first.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_friend.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_gallery.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_home.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_institution_profile.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_list_petprofile.xml" value="0.21822916666666667" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_message_overview.xml" value="0.21822916666666667" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_search.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_second.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/fragment_slideshow.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/nav_drawer.xml" value="0.2015625" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/nav_header_nav_drawer.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/pet_list_entry.xml" value="0.21822916666666667" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/layout/user_profile.xml" value="0.20520833333333333" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/menu/activity_main_drawer.xml" value="0.18854166666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/menu/draw_menu.xml" value="0.18489583333333334" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/menu/main_menu.xml" value="0.18854166666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/menu/nav__drawer.xml" value="0.18854166666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/mipmap-anydpi-v26/ic_example.xml" value="0.22135416666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/mipmap-anydpi-v26/ic_example_round.xml" value="0.234375" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22135416666666666" />
+        <entry key="..\:/PfotenFreunde/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.22135416666666666" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.22135416666666666" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.22135416666666666" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/draw_edit_button.xml" value="0.21510416666666668" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/draw_header.xml" value="0.21822916666666667" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/draw_round_button.xml" value="0.21510416666666668" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/draw_toolbar.xml" value="0.21822916666666667" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/drawer_content.xml" value="0.21822916666666667" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/entry_chat_msg.xml" value="0.21510416666666668" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/entry_feed.xml" value="0.20520833333333333" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/entry_friend_request.xml" value="0.20520833333333333" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/entry_msg_overview.xml" value="0.21510416666666668" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/entry_pet_list.xml" value="0.21510416666666668" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/fragment_feed.xml" value="0.1" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/fragment_friend.xml" value="0.21510416666666668" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/fragment_institution_profile.xml" value="0.21510416666666668" />
+        <entry key="..\:/_se2021/PfotenFreunde/app/src/main/res/layout/fragment_open_friend_request.xml" value="0.21510416666666668" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
