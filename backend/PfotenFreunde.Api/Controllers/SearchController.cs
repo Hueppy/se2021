@@ -21,7 +21,10 @@ public class SearchController : ControllerBase
     [HttpGet("user")]
     public IEnumerable<User> SearchUser(string query)
     {
-        return null;
+        var people = context.People.Where(x => x.Name.Contains(query) || x.Surname.Contains(query));
+        var institutions = context.Institutions.Where(x => x.Name.Contains(query));
+        
+        return Enumerable.Union<User>(people, institutions);
     }
 
     /// <summary>
@@ -30,6 +33,6 @@ public class SearchController : ControllerBase
     [HttpGet("pet")]
     public IEnumerable<Pet> SearchPet(string query)
     {
-        return null;
+        return context.Pets.Where(x => x.Name.Contains(query));
     }
 }
