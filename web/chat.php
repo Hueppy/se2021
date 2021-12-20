@@ -5,6 +5,17 @@ if(!isset($_SESSION["email"]) || !isset($_SESSION["pw"]) || !isset($_SESSION["id
   header("Location: index.php");
   exit;
 }
+
+$chatroomApi = new \OpenAPI\Client\Api\ChatroomApi();
+$chatroomModel = new \OpenAPI\Client\Model\Chatroom();
+
+if(isset($_POST["submitchat"])){
+  $chatid = $chatroomApi->chatroomPost($chatroomModel);
+  $chatroomApi->chatroomIdUserPost($chatid, $_SESSION["id"]);
+  $chatroomApi->chatroomIdUserPost($chatid, $_POST["user"]);
+  header("Location: chat.php?id=$chatid");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +34,49 @@ if(!isset($_SESSION["email"]) || !isset($_SESSION["pw"]) || !isset($_SESSION["id
         <a class="navbtns3 active" href="chat.php">Nachrichten</a><br>
         <a class="navbtns4" href="profiles.php">Haustierprofile</a><br>
         <a class="logout" href="logout.php">Logout</a><br>
-        <a class="language" href="en/profiles.php">Auf Englisch!</a>
+        <a class="language" href="en/chat.php">Auf Englisch!</a>
       </div>
       <div class="ContentMiddle1">
+        <div class="chat">
+          <?php
+          if(isset($_GET["id"])){
+            ?>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Sender</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $messages = $chatroomApi->chatroomIdMessagesGet($_GET["id"]);
+                  $userApi = new \OpenAPI\Client\Api\UserApi();
+                  $userApi->getConfig()
+                    ->setUsername($_SESSION['email'])
+                    ->setPassword($_SESSION['pw']);
+            
+                  foreach($messages as $msg){
+                    $user = $userApi->userIdGet($msg->getSenderId());
+                  ?>
+                    <tr>
+                      <td><?php echo $user->getName(); ?></td>
+                      <td><?php echo $msg->getText(); ?></td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
+                  <form method="post">
+                    <textarea></textarea>
+                    <input type="submit" value="Nachricht senden">
+                  </form>
+                  <?php
+            }
+                  ?>
+                </tbody>
+              </table>
+            </div>
+        </div>
       </div>
     </div>
   </body>
