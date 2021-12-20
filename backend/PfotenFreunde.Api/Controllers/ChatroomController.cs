@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PfotenFreunde.Shared.Contexts;
 using PfotenFreunde.Shared.Models;
 
@@ -78,7 +79,10 @@ public class ChatroomController : ControllerBase
     [HttpGet("{id}/user")]
     public async Task<ActionResult<IEnumerable<User>>> GetUsers(int id)
     {
-		var chatroom = await this.context.Chatrooms.FindAsync(id);
+		var chatroom = await this.context.Chatrooms
+            .Include(x => x.Users)
+            .FirstAsync(x => x.Id == id);
+        
         if (chatroom == null) {
             return NotFound();
         }
