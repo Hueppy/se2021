@@ -46,6 +46,22 @@ public class MeController : ControllerBase
     }
 
     /// <summary>
+    /// Gets chatrooms of user
+    /// </summary>
+    [HttpGet("chatrooms")]
+    public ActionResult<IEnumerable<Chatroom>> GetChatroom()
+    {
+        return this.WithCurrentUser<IEnumerable<Chatroom>>(context, user =>
+        {
+            var ids = context.Chatrooms
+                .Where(x => x.Users.Any(y => y.Id == user.Id))
+                .Select(x => x.Id);
+
+            return Ok(context.Chatrooms.Where(x => ids.Contains(x.Id)));
+        });
+    }
+
+    /// <summary>
     /// Set the current user status
     /// </summary>
     [HttpPost("status")]
@@ -60,4 +76,6 @@ public class MeController : ControllerBase
             return Ok();
         });
     }
+
+    
 }
