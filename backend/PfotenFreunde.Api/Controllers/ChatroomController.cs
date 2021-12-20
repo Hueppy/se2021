@@ -70,6 +70,46 @@ public class ChatroomController : ControllerBase
 		await this.context.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// Gets all users of the chatroom
+    /// </summary>
+    /// <response code="404">Chatroom not found</response>
+    [HttpGet("{id}/user")]
+    public async Task<ActionResult<IEnumerable<User>>> GetUsers(int id)
+    {
+		var chatroom = await this.context.Chatrooms.FindAsync(id);
+        if (chatroom == null) {
+            return NotFound();
+        }
+        
+        return Ok(chatroom.Users);
+    }
+
+    /// <summary>
+    /// Adds a new user to the chatroom
+    /// </summary>
+    /// <response code="404">Chatroom not found</response>
+    [HttpPost("{id}/user")]
+    public async Task<ActionResult> PostUser(int id, int userId)
+    {
+		var chatroom = await this.context.Chatrooms.FindAsync(id);
+        if (chatroom == null) {
+            return NotFound();
+        }
+
+        var user = await this.context.Users.FindAsync(userId);
+        if (user == null) {
+            return NotFound();
+        }
+
+        chatroom.Users.Add(user);
+        
+        context.Chatrooms.Update(chatroom);
+        await context.SaveChangesAsync();
+
+        return Ok();
+    }
+
 	/// <summary>
     /// Gets all messages of the chatroom
     /// </summary>
