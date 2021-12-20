@@ -18,7 +18,7 @@ public partial class Pet
     public Species Species { get; set; }
 
     [JsonIgnore]
-    public virtual Person Owner { get; set; } = null!;
+    public virtual Person? Owner { get; set; } = null!;
     [JsonIgnore]
     public virtual ICollection<Attribute> Attributes { get; set; }
     [JsonIgnore]
