@@ -6,7 +6,6 @@ if(!isset($_SESSION["email"]) || !isset($_SESSION["pw"]) || !isset($_SESSION["id
   exit;
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -20,12 +19,15 @@ if(!isset($_SESSION["email"]) || !isset($_SESSION["pw"]) || !isset($_SESSION["id
   <body>
     <div class="flex-container">
       <div class="ContentLeft1">
+        <div>
+          <img style="object-fit: contain; width: 200px;" src="img/logo.png" class="logo">
+        </div>
         <a class="navbtns1 active" href="search.php">Suche</a><br>
         <a class="navbtns2" href="friends.php">Freunde</a><br>
         <a class="navbtns3" href="chat.php">Nachrichten</a><br>
         <a class="navbtns4" href="profiles.php">Haustierprofile</a><br>
         <a class="logout" href="logout.php">Logout</a><br>
-        <a class="language" href="en/profiles.php">Auf Englisch!</a>
+        <a class="language" href="en/search.php">Auf Englisch!</a>
       </div>
       <div class="ContentMiddle1">
         <div class="search">
