@@ -48,6 +48,7 @@ public class FriendController : ControllerBase
                     ReceiverId = userId,
                     SenderId = user.Id
                 });
+            context.SaveChanges();
             return Ok();
         });
     }
