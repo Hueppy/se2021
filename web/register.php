@@ -56,8 +56,8 @@
         <input type="text" name="zip" pattern="[0-9]*" class="zip" placeholder="Postleitzahl" required><br>
         <input type="text" name="city" placeholder="Stadt" class="city" required>
         <input type="number" name="age" placeholder="Alter" class="age" required><br>
-        <p class="sex">Sex: <input type="radio" name="sex" value="Male" required>Male
-        <input type="radio" name="sex" value="Female">Female</p>
+        <p class="sex">Sex: <input type="radio" name="sex" value="Male" required>Männlich
+        <input type="radio" name="sex" value="Female">Weiblich</p>
         <p style="color:white;">Institution? <input type="text" name="homepage" placeholder="www.example.com (Optional)" class="institution"><br>
         <input type="hidden" name="role" value="1">
         <input type="password" name="pw" placeholder="Passwort" class="pw" required>
