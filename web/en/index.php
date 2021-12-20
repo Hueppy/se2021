@@ -10,23 +10,25 @@
   <body>
     <?php
     if(isset($_POST["submit"])){
-      require("../mysql.php");
-      $stmt = $mysql->prepare("SELECT * FROM login WHERE email = :email");
-      $stmt->bindParam(":email", $_POST["email"]);
-      $stmt->execute();
-      $count = $stmt->rowCount();
-      if($count == 1){
-        $row = $stmt->fetch();
-        if(password_verify($_POST["pw"], $row["password_hash"])){
-          session_start();
-          $_SESSION["email"] = $row["email"];
-          header("Location: profiles.php");
-        }else{
-          echo '<span style="color:white;">Login failed!</span>';
-        }
+      require_once('../vendor/autoload.php');
 
-      }else{
-          echo '<span style="color:white;">Login failed!</span>';
+      $meApi = new OpenAPI\Client\Api\MeApi();
+      $meApi->getConfig()
+        ->setUsername($_POST['email'])
+        ->setPassword($_POST['pw']);
+      
+      try {
+        $meApi->meStatusPost(1);
+        $me = $meApi->meGet();
+
+        session_start();
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['pw'] = $_POST['pw'];
+        $_SESSION['id'] = $me->getId();
+
+        header("Location: profiles.php");
+      } catch (Exception) {
+        echo '<span style="color:white;">Login failed!</span>';
       }
     }
     ?>
@@ -34,12 +36,12 @@
       <img src="../img/logo.png" class="logo">
       <h1 class="txt-h1">Login</h1>
       <form action="index.php" method="post" autocomplete="off">
-        <input type="email" name="email" placeholder="E-Mail Address" class="email" maxlength="18" required><br>
+        <input type="email" name="email" placeholder="E-Mail address" class="email" maxlength="40" required><br>
         <input type="password" name="pw" placeholder="Password" class="pw" required><br>
-        <button type="submit" name="submit" class="formsubmit">Login</button>
+        <button type="submit" name="submit" class="formsubmit">Log-in</button>
       </form>
       <br>
-      <p class="txt-p1">Not a member yet? <a href="register.php" class="hyperlinks"> Register</a></p>
+      <p class="txt-p1">Noch keinen Account? <a href="register.php" class="hyperlinks">Register</a></p>
       <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Language</button>
         <div id="myDropdown" class="dropdown-content">
