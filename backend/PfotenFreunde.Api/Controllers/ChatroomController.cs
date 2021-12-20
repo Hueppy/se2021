@@ -50,6 +50,7 @@ public class ChatroomController : ControllerBase
     [HttpPost]
     public async Task<int> Post(Chatroom chatroom)
     {
+        chatroom.StartedAt = DateTime.Now;
 		var entry = await this.context.Chatrooms.AddAsync(chatroom);
 
 		await this.context.SaveChangesAsync();

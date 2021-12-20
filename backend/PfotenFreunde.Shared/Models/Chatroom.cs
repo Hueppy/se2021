@@ -11,7 +11,7 @@ public partial class Chatroom
     }
 
     public int Id { get; set; }
-    public DateTime StartedAt { get; set; }
+    public DateTime? StartedAt { get; set; }
 
     [JsonIgnore]
     public virtual ICollection<Message> Messages { get; set; }
