@@ -34,6 +34,9 @@ if (isset($_POST["submitdecline"])) {
 <body>
   <div class="flex-container">
     <div class="ContentLeft1">
+      <div>
+        <img style="object-fit: contain; width: 200px;" src="img/logo.png" class="logo">
+      </div>
       <a class="navbtns1" href="search.php">Suche</a><br>
       <a class="navbtns2 active" href="friends.php">Freunde</a><br>
       <a class="navbtns3" href="chat.php">Nachrichten</a><br>
@@ -64,7 +67,7 @@ if (isset($_POST["submitdecline"])) {
         </div>
       <?php
       } ?>
-      <div class="tablediv">
+      <div class="tablediv2">
         <table class="table">
           <thead>
             <tr>
@@ -81,9 +84,9 @@ if (isset($_POST["submitdecline"])) {
                 <td>
                   <?php echo $friend->getName(); ?>
                 </td>
-                <td>
+                <td class="td2">
                   <form action="chat.php?user=<?php echo $friend->getId(); ?>" method="post">
-                    <input type="submit" class="submitchat" name="submitchat" value="Chat öffnen">
+                    <input type="submit" class="submitchat" name="submitchat" value="Neuen Chat öffnen">
                   </form>
                 </td>
               </tr>
