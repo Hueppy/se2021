@@ -19,9 +19,12 @@
       
       try {
         $meApi->meStatusPost(1);
+        $me = $meApi->meGet();
 
+        session_start();
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['pw'] = $_POST['pw'];
+        $_SESSION['id'] = $me->getId();
 
         header("Location: profiles.php");
       } catch (Exception) {
