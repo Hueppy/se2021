@@ -498,3 +498,96 @@ loginform{
   border: none;
   cursor: pointer;
 }
+
+.ContentMiddle1 .chat{
+  display: block;
+  color: white;
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.ContentMiddle1 .chat2{
+  display: block;
+  color: white;
+  height: 700px;
+  overflow-y: scroll;
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.chatlinks{
+  text-decoration: none;
+  color:white;
+}
+.chatlinks:hover{
+  text-decoration: underline;
+}
+
+
+.ContentMiddle1 .chat .textareachat{
+  resize: none;
+  border-radius: 8px;
+  width: 800px;
+  height: 35px;
+}
+.tablediv2{
+  display: block;
+  color: white;
+  text-align: left;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.tablediv2 th{
+  text-align: left;
+}
+.tablediv2 .td2{
+  text-align: right;
+}
+.submitchat{
+  background-color: #212121;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+.submitchat:hover{
+  cursor: pointer;
+  background-color: #383838;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color:  rgba(0, 0, 0, 0);
+  -webkit-border-radius: 100px;
+}
+
+::-webkit-scrollbar:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background: #1d9bf0;
+  -webkit-border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:vertical:active {
+  background: #1d9bf0; 
+  -webkit-border-radius: 100px;
+}
+
+background: linear-gradient(45deg, white, silver);
+min-height: 100%;
+
+
