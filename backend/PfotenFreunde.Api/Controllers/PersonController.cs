@@ -71,9 +71,8 @@ public class PersonController : ControllerBase
     /// Gets the list of pets of the specified person
     /// </summary>
     [HttpGet("{id}/Pets")]
-    public IEnumerable<int> GetPets(int id)
+    public IEnumerable<Pet> GetPets(int id)
     {
-        // TODO: Implement this
-        return null;
+        return this.context.Pets.Where(x => x.OwnerId == id);
     }
 }
