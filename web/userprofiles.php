@@ -35,6 +35,9 @@ if(isset($_POST["submitcancel"])){
   <body>
     <div class="flex-container">
       <div class="ContentLeft1">
+        <div>
+          <img style="object-fit: contain; width: 200px;" src="../img/logo.png" class="logo">
+        </div>
         <a class="navbtns1" href="search.php">Suche</a><br>
         <a class="navbtns2" href="friends.php">Freunde</a><br>
         <a class="navbtns3" href="chat.php">Nachrichten</a><br>
