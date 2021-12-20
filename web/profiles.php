@@ -62,17 +62,14 @@ if(!isset($_SESSION["email"]) || !isset($_SESSION["pw"]) || !isset($_SESSION["id
                 </thead>
               <tbody>
               <?php
-                $user = $_SESSION["id"];
-                $query = $mysql->prepare("SELECT * FROM pet WHERE owner_id = $user");
-                $query->execute();
-                $results = $query->fetchAll();
-                $rows = $query->rowCount();
+                $personApi = new OpenAPI\Client\Api\PersonApi();
+                $personApi->getConfig()
+                  ->setUsername($_SESSION['email'])        
+                  ->setPassword($_SESSION['pw']);
+                $pets = $personApi->personIdPetsGet($_SESSION["id"]);
 
-                if(!isset($rows)){
-                }elseif($rows != 0){
-                    foreach($results as $r){
-                      echo "<tr><td>{$r["name"]}</td><td>{$r["description"]}</td></tr>\n";
-                    }
+                    foreach($pets as $pet){
+                      echo "<tr><td>{$pet->getName()}</td><td>{$pet->getDescription()}</td></tr>\n";    
                   }
                ?>
               </tbody>
@@ -80,8 +77,6 @@ if(!isset($_SESSION["email"]) || !isset($_SESSION["pw"]) || !isset($_SESSION["id
             </div>
           </div>
         </div>
-      <div class="ContentRight1">
-      </div>
     </div>
   </body>
 </html>
