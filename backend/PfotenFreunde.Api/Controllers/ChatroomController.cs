@@ -134,6 +134,8 @@ public class ChatroomController : ControllerBase
     public async Task PostMessage(int id, Message message)
     {
 		message.ChatroomId = id;
+        message.SendAt = DateTime.Now;
+        message.SeenAt = DateTime.MinValue;
 		await this.context.Messages.AddAsync(message);
 
 		await this.context.SaveChangesAsync();
